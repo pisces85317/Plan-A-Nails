@@ -1,0 +1,89 @@
+.bgLogin { 
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.5); /* Black w/ opacity */ 
+}
+.loginDiv {
+    box-sizing: border-box;
+    width: 45%;
+    height: 50%;
+    margin: auto;
+    padding-top: 1%;
+    border-radius: 25px;
+    background-color: #8E8E8E;
+    position: relative;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+@keyframes zoom {
+    from {transform:scale(0)}
+    to {transform:scale(1)}
+  }
+.loginTitle {
+    text-align: center;
+}
+.loginXmark svg {
+    position: absolute;
+    top: 1%;
+    right: 1%;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.loginXmark svg:hover {
+    stroke-opacity: 0.5;
+}
+.userData {
+    margin: 5%;
+}
+.userData div {
+    margin-top: 3%;
+}
+.userData label {
+    font-size: xx-large;
+}
+.userData input {
+    padding: 0;
+    border: 0;
+    width: 80%;
+    margin: 0 10%;
+    height: 36px;
+    font-size: 36px;
+}
+.userData input:focus {
+    outline: none;
+}
+.loginBtn {
+    margin: 5%;
+    padding: 0 5%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5%;
+    text-align: center;
+}
+.loginBtn input {
+    height: 48px;
+    font-size: 24px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: 0.3s;
+    cursor: pointer;
+    background-color: black;
+}
+.loginBtn input:hover {
+    color: black;
+    background-color: white;
+}
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: block;
+}

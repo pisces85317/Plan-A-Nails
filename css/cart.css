@@ -1,0 +1,200 @@
+.bgCart {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: hidden; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+}
+.divCart {
+    background-color: white;
+    width: 30%;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    box-sizing: border-box;
+    animation-name: toLeft;
+    animation-duration: 0.6s;
+}
+
+@keyframes toLeft {
+  from {transform:translateX(50%)}
+  to {transform:translateX(0)}
+}
+.cartTitle {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    border-bottom: 3px solid #8E8E8E;
+    letter-spacing: 1em;
+}
+.cartTitle div {
+    display: inline-block;
+}
+.cartXmark {
+    cursor: pointer;
+    transition: 0.3s
+}
+.cartXmark:hover {
+    stroke-opacity: 0.5;
+}
+.cartTitleH1 {
+    width: 70%;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(0,-50%);
+    text-align: center;
+    padding-right: 15%;
+}
+.cartTitle h1 {
+    margin: 0;
+}
+.cartFooter {
+    position: absolute;
+    width: 90%;
+    bottom: 0;
+    border-top: 3px solid #8E8E8E;
+    padding: 0 5%;
+}
+.cartFooter > * {
+    display: inline-block;
+}
+.cartFooter p {
+    margin: 5%;
+    font-size: 1em;
+}
+.cartFooter h1 {
+    margin: 0;
+    font-size: 2em;
+}
+.cartFooter button {
+    margin: 0;
+    padding: 0 5%;
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translate(0,-50%);
+    font-size: 20px;
+    background-color: black;
+    color: white;
+    border: 0;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.cartFooter button:hover {
+    background-color: #8E8E8E;
+    color: black;
+    border: 0;
+}
+.cartItem {
+    width: 100%;
+    position: absolute;
+    top: 43px;
+    height: calc(100% - 90px);
+    overflow: scroll;
+}
+.cartItem::-webkit-scrollbar {
+    display: none;
+}
+/* .cartItemSub {
+    background-color: blue;
+    position: relative;
+}
+.cartItemGrid {
+    padding: 5%;
+    height: 25%;
+    background-color: honeydew;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+.cartItemImg {
+    background-color: brown; 
+    grid-column: 1/2; 
+    grid-row: 1/3;
+    background-image: url(../img/Camellia\ Japonica.jpeg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 5px;
+}
+.cartItemTitle {
+    background-color: chartreuse;
+    grid-column: 2/4; 
+    grid-row: 1/2;
+    margin: 3%;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+}
+.cartItemSize {
+    background-color: darkmagenta; 
+    grid-column: 2/3; 
+    grid-row: 2/3;
+    margin: 3% 70% 25% 6%;
+}
+.cartItemPrice {
+    background-color: forestgreen; 
+    grid-column: 2/3; 
+    grid-row: 3/4;
+    position: relative;
+}
+.cartItemPrice div {
+    display: inline-block;
+}
+.cartItemPriceNum {
+    background-color: indigo;
+    font-size: 28px;
+    position: absolute;
+    bottom: 0;
+    right: 6%;
+    letter-spacing: 2px;
+}
+.cartItemQuantity {
+    background-color: goldenrod; 
+    grid-column: 3/4; 
+    grid-row: 3/4;
+    position: relative;
+}
+.cartItemQuantityBtn {
+    background-color: inherit;
+    width: fit-content;
+    border: 1px solid rgba(128, 128, 128, 0.5);
+    border-radius: 5px;
+    position: absolute;
+    bottom: 0;
+}
+.cartItemQuantity input {
+    width: 12px;
+    border: none;
+    background-color: inherit;
+    cursor:default;
+}
+.cartItemQuantity input:focus {
+    outline: none;
+}
+.cartItemQuantity button {
+    background-color: inherit;
+    border: none;
+    cursor: pointer;
+    color: rgb(128, 128, 128,);
+    font-size: 20px;
+}
+.cartItemXmark {
+    background-color: lawngreen;
+    width: fit-content;
+    position: absolute;
+    top: 0;
+    right: 0;
+} */
+.hidden {
+    display: none;
+}
+.visible {
+    display: block;
+}
