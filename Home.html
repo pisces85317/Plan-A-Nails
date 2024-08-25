@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./css/nav.css">
     <link rel="stylesheet" href="./css/login.css">
     <link rel="stylesheet" href="./css/cart.css">
+    <link rel="stylesheet" href="./css/news.css">
     <style>
         body {
             background-color: rgb(255, 232, 232);
@@ -151,6 +152,47 @@
                 cartIO.add("hidden");
                 cartIO.remove("visible");
             }
+        }
+    </script>
+    <!-- plusNewsSlides() -->
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusNewsSlides(n) {
+        showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+        showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("newsSlides");
+        if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slides[slideIndex-1].style.display = "block";
+        }
+    </script>
+    <!-- autoShowSlides() -->
+    <script>
+        let autoSlideIndex = 0;
+        autoShowSlides();
+
+        function autoShowSlides() {
+        let i;
+        let slides = document.getElementsByClassName("newsSlides");
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        autoSlideIndex++;
+        if (autoSlideIndex > slides.length) {autoSlideIndex = 1}
+        slides[autoSlideIndex-1].style.display = "block";
+        setTimeout(autoShowSlides, 3000);
         }
     </script>
 </body>
