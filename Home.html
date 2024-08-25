@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="./css/login.css">
     <link rel="stylesheet" href="./css/cart.css">
     <link rel="stylesheet" href="./css/news.css">
+    <link rel="stylesheet" href="./css/product.css">
+    <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="./css/toTheTop.css">
     <style>
         body {
             background-color: rgb(255, 232, 232);
@@ -127,6 +130,95 @@
         <a class="newsPrev" onclick="plusNewsSlides(-1)">&#10094;</a>
         <a class="newsNext" onclick="plusNewsSlides(1)">&#10095;</a>
     </div>
+    <!-- 商品區 -->
+    <div class="productTitle">
+        <h1>New Arrivals</h1>
+    </div>
+    <div class="filterDiv">
+        <input type="text" id="filter" onkeyup="filter()" placeholder="Search for names..">
+    </div>
+    <div class="gridList" id="listDiv">
+        <div class="card" onclick="showDetail()">
+            <div class="imgPosition">
+                <img src="./img/Camellia Japonica.jpeg">
+                <button>Add to Cart</button>
+            </div>
+            <h3>Camellia Japonica</h3>
+            <p>$ 28.50</p>
+        </div>
+        <div class="card cursorSelf">
+            <div class="imgPosition">
+                <img src="./img/Coming Soon.jpg" alt="Coming Soon">
+            </div>
+        </div>
+    </div>
+    <!-- 頁尾 -->
+    <div class="descripOne hidden" id="linkOne">
+        <h1>Support</h1>
+        <p>📞Phone:+(61) 478757226</p>
+        <p>✉️Email:plananails888@gmail.com</p>
+        <p>📍Address:Student one 363 Adelaide street Brisbane City4000</p>
+    </div>
+    <div class="descripTwo hidden" id="linkTwo">
+        <h1>Shipping Methods</h1>
+        <p>We currently offer standard and express shipping via Australia Post for all orders within and outside Australia.</p>
+        <h1>Domestic Shipping Rate</h1>
+        <p>Orders $49 and over</p>
+        <p>Standard Shipping: FREE
+            Express Shipping: $5.95
+            Orders under $49</p>
+        <p>Standard Shipping: $8.5
+            Express Shipping: $11.95
+            Order Processing Time</p>
+        <p>All orders are processed within 1 business day. Once your order has been shipped, you will receive a shipping confirmation email with your tracking information. </p>
+        <h1>Delivery Time</h1>
+        <p>Delivery times vary depending on your location and the shipping method you choose. Standard shipping typically takes 2-5 business days for delivery within Australia, while express shipping typically takes 1-2 business days.
+            
+            For international orders, standard shipping can take up to 15 business days, while express shipping typically takes 5-7 business days.
+            
+            Please note that delivery times may be delayed due to unforeseen circumstances such as weather, holidays, or other factors outside of our control.
+            
+            Undeliverable Packages</p>
+        <p>If a package is undeliverable due to an incorrect shipping address provided by the customer, the customer will be responsible for the additional shipping costs to re-ship the order. If the package is undeliverable due to other reasons, we will contact the customer to determine the best course of action.</p>
+    </div>
+    <div class="descripThree hidden" id="linkThree">
+        <h1>Return Eligibility</h1>
+        <p>If you are not satisfied with your purchase, you can return the item(s) for a full refund or exchange within 14 days of receiving your order. To be eligible for a return, the item(s) must be unused, in the same condition that you received them, and in their original packaging.</p>
+        <h1>Return Process</h1>
+        <p>To initiate a return, please email us with your order number, the item(s) you wish to return, and the reason for the return. We will provide you with instructions on how to return the item(s) to us. Please note that the customer is responsible for all return shipping costs unless the item(s) received were defective or incorrect.</p>
+        <h1>Refunds</h1>
+        <p>Once we receive your returned item(s), we will inspect them and notify you of the status of your refund. If your return is approved, we will initiate a refund to your original method of payment. Please note that it may take several business days for your refund to appear on your credit card or bank statement.</p>
+        <h1>Defective or Incorrect Items</h1>
+        <p>If you receive a defective or incorrect item, please email us within 14 days of receiving your order with your order number and a photo of the defective or incorrect item(s). We will provide you with instructions on how to return the item(s) to us and a prepaid return label. Once we receive the defective or incorrect item(s), we will process your refund or exchange as soon as possible.</p>
+    </div>
+    <div class="divFooter">
+        <div class="divCos">
+            <h1>COSTOMER CARE</h1>
+            <hr>
+            <p id="msgOne" onclick="showMsgOne()">Contact Us</p>
+            <p id="msgTwo" onclick="showMsgTwo()">Shipping & Delivery</p>
+            <p id="msgThree" onclick="showMsgThree()">Return & Refund</p>
+        </div>
+        <div class="divSol">
+            <h1>SOCIAL MEDIA</h1>
+            <hr>
+            <div class="footerIcon">
+                <a href="http://instegram.com">
+                    <img src="./img/instagram.svg">
+                </a>
+                <a href="http://facebook.com">
+                    <img src="./img/facebook.svg">
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- 回到商品區 -->
+    <div class="toTheTop" id="myBtn" onclick="topFunction()">
+        <svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#8E8E8E">
+            <path d="M6 20L18 20" stroke="#8E8E8E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M12 16V4M12 4L15.5 7.5M12 4L8.5 7.5" stroke="#8E8E8E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+    </div>
 
     <!-- showLogin() -->
     <script>
@@ -193,6 +285,95 @@
         if (autoSlideIndex > slides.length) {autoSlideIndex = 1}
         slides[autoSlideIndex-1].style.display = "block";
         setTimeout(autoShowSlides, 3000);
+        }
+    </script>
+    <!-- filter() -->
+    <script>
+        function filter() {
+          var input, filter, listDiv, div, h3, i, txtValue;
+          input = document.getElementById('filter');
+          filter = input.value.toUpperCase();
+          listDiv = document.getElementById("listDiv");
+          div = listDiv.getElementsByTagName('div');
+        
+          for (i = 0; i < div.length; i++) {
+            h3 = div[i].getElementsByTagName("h3")[0];
+            txtValue = h3.textContent || h3.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              div[i].style.display = "";
+            } else {
+              div[i].style.display = "none";
+            }
+          }
+        }
+    </script>
+    <!-- showMsg() -->
+    <script>
+        var linkOne = document.getElementById("linkOne").classList;
+        var linkTwo = document.getElementById("linkTwo").classList;
+        var linkThree = document.getElementById("linkThree").classList;
+        function showMsgOne() {
+            // console.log(linkOne);
+            if(linkOne.contains("hidden")){
+                linkOne.remove("hidden");
+                linkOne.add("visible");
+                linkTwo.remove("visible");
+                linkTwo.add("hidden");
+                linkThree.remove("visible");
+                linkThree.add("hidden");
+            }else{
+                linkOne.remove("visible");
+                linkOne.add("hidden");
+            }
+        }
+        function showMsgTwo() {
+            // console.log(linkTwo);
+            if(linkTwo.contains("hidden")){
+                linkTwo.remove("hidden");
+                linkTwo.add("visible");
+                linkOne.remove("visible");
+                linkOne.add("hidden");
+                linkThree.remove("visible");
+                linkThree.add("hidden");
+            }else{
+                linkTwo.remove("visible");
+                linkTwo.add("hidden");
+            }
+        }
+        function showMsgThree() {
+            // console.log(linkThree);
+            if(linkThree.contains("hidden")){
+                linkThree.remove("hidden");
+                linkThree.add("visible");
+                linkTwo.remove("visible");
+                linkTwo.add("hidden");
+                linkOne.remove("visible");
+                linkOne.add("hidden");
+            }else{
+                linkThree.remove("visible");
+                linkThree.add("hidden");
+            }
+        }
+    </script>
+    <!-- topFunction() -->
+    <script>
+        var  mybutton = document.getElementById("myBtn");
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {            
+            if (document.body.scrollTop > 870 || document.documentElement.scrollTop > 870) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        function topFunction() {
+            document.body.scrollTop = 870; 
+            // For Safari
+            document.documentElement.scrollTop = 870; 
+            // For Chrome, Firefox, IE and Opera
+            
         }
     </script>
 </body>
