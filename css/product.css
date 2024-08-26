@@ -93,3 +93,277 @@
 .card.cursorSelf:hover {
     cursor: context-menu;
 }
+
+/* 產品細節 */
+.stopScroll {
+    overflow: hidden;
+}
+.bgDiv {
+    /* Hidden by default */
+    /* display: none;  */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.5); /* Black w/ opacity */ 
+}
+.fixed-container {
+    padding: 0.5%;
+    width: 49%;
+    height: 74%;
+    background-color: white;
+    border-radius: 5px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-name: up;
+    animation-duration: 0.5s;
+}
+@keyframes up {
+    from {transform:translate(-50%, 0)}
+    to {transform:translateY(-50%, -50%)}
+}
+.xMark {
+    position: absolute;
+    right: 1%;
+    background-color: white;
+    transition: 0.3s;
+}
+.xMark:hover, .xMark:active {
+    opacity: 0.8;
+    cursor: pointer;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(15,10%);
+    height: 100%;
+    overflow: scroll;
+}
+.grid-container::-webkit-scrollbar {
+    display: none;
+}
+.img-container {
+    grid-row: 1/9;
+    position: relative;
+}
+.title-container {
+    grid-column: 2/3;
+    grid-row: 1/4;
+}
+.size-container {
+    grid-column: 2/3;
+    grid-row: 4/7;
+}
+.add-container {
+    grid-column: 2/3;
+    grid-row: 7/9;
+}
+.text-container {
+    grid-column: 1/3;
+    grid-row: 9/16;
+}
+.mainImg {
+    width: 100%;
+    height: 75%;
+    display: block;
+    cursor: pointer;
+}
+.mainImg img {
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover;
+}
+.prev,.next {
+    cursor: pointer;
+    position: absolute;
+    top: 45%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+}
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+.img-container hr {
+    width: 80%;
+}
+.row {
+    height: 20%;
+    display: block;
+    cursor: pointer;
+}
+.row:after {
+    content: "";
+    clear: both;
+}
+.column {
+    float: left;
+    width: 25%;
+    height: 100%;
+}
+.column img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.demo {
+    opacity: 0.6;
+}
+.active, .demo:hover {
+    opacity: 1;
+}
+.modal {
+    /* Hidden by default */
+    display: none; 
+    position: fixed; /* Stay in place */
+    z-index: 2; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.8); /* Black w/ opacity */ 
+}
+.modal-content {
+    margin: auto;
+    display: block;
+    height: 100%;
+    animation-name: zoom;
+    animation-duration: 0.5s;
+}
+@keyframes zoom {
+    from {transform:scale(0)}
+    to {transform:scale(1)}
+}
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.close:hover, .close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+.title-container {
+    padding-left: 5%;
+}
+.title-container h2 {
+    display: inline;
+}
+.title-container span {
+    font-size: 1em;
+}
+.size-container {
+    padding-left: 5%;
+}
+.sizeDiv {
+    display: inline-flex;
+    flex-direction: row;
+    width: 90%;
+    height: 25%;
+}
+.sizeDiv button {
+    background-color: inherit;
+    width: 20%;
+    margin-right: 5%;
+    font-size: 1em;
+    border: 2px solid rgba(128, 128, 128, 0.5);
+    border-radius: 5px;
+    cursor: pointer;
+}
+.sizeDiv button:focus {
+    border: 2px solid rgba(0, 0, 0, 0.5);
+}
+.quanDiv {
+    display: inline-flex;
+    flex-direction: row;
+    width: 90%;
+    margin-top: 4%;
+    height: 20%;
+    border-radius: 5px;
+    border: 2px solid rgba(128, 128, 128, 0.5);
+}
+.quanDiv button {
+    background-color: inherit;
+    border: 0;
+    padding-inline: 0;
+    width: 30%;
+    flex-grow:1;
+    font-size: 1.5em;
+    color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+.quanDiv button:hover {
+    color: rgba(0, 0, 0, 1);
+}
+.quanDiv button:active {
+    color: rgba(0, 0, 0, 0.5);
+}
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number] {
+    width: 30%;
+    border: 0;
+    padding-inline: 0;
+    background-color: inherit;
+    flex-grow:1;
+    font-size: 1em;
+    text-align: center;
+}
+input[type=number]:focus {
+    outline: 0;
+}
+.add-container {
+    padding: 5% 10%;
+}
+.add-container button {
+    width: 100%;
+    height: 50%;
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 0;
+    color: white;
+    font-size: 1em;
+    letter-spacing: 0.5em;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.add-container button:hover {
+    background-color: #8E8E8E;
+    color: black;
+    border: 0;
+}
+.text-container h1 {
+    text-align: center;
+}
+.text-container hr {
+    width: 80%;
+}
+.text-container div {
+    padding: 5%;
+    font-size: 1.5em;
+}

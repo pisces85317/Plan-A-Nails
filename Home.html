@@ -138,7 +138,7 @@
         <input type="text" id="filter" onkeyup="filter()" placeholder="Search for names..">
     </div>
     <div class="gridList" id="listDiv">
-        <div class="card" onclick="showDetail()">
+        <div class="card" onclick="callcreate()">
             <div class="imgPosition">
                 <img src="./img/Camellia Japonica.jpeg">
                 <button>Add to Cart</button>
@@ -225,7 +225,7 @@
             <path d="M12 16V4M12 4L15.5 7.5M12 4L8.5 7.5" stroke="#8E8E8E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
         </svg>
     </div>
-
+    
     <!-- showLogin() -->
     <script>
         function showLogin () {
@@ -381,6 +381,317 @@
             // For Chrome, Firefox, IE and Opera
             
         }
+    </script>
+    <!-- Product(產品物件) -->
+    <script>
+        function Product (name,img1,img2,price,xs,s,m){
+            this.name = name
+            this.img = [img1,img2,"../img/HowToMeasurre.png","../img/UserGuide.jpeg"]
+            this.price = price
+            this.xs = xs
+            this.s = s
+            this.m = m
+        }
+    </script>
+    <!-- addCard() -->
+    <script>
+        function addCard (objName) {
+            console.log(objName);
+            // console.log(typeof objName);
+            
+            let imgX = objName.img;
+            let nameX = objName.name;
+            let priceX = objName.price;
+
+            let card = document.createElement("div");
+            card.setAttribute("class","card");
+            card.setAttribute("onclick","callcreate()");
+
+            let imgPosition = document.createElement("div");
+            imgPosition.setAttribute("class","imgPosition");
+            card.appendChild(imgPosition);
+
+            let imgElem = document.createElement("img");
+            imgElem.setAttribute("src",imgX[0]);
+            imgPosition.appendChild(imgElem);
+
+            let btnElem = document.createElement("button");
+            btnElem.textContent = "Add to Cart";
+            imgPosition.appendChild(btnElem);
+
+            let h3Elem = document.createElement("h3");
+            h3Elem.textContent = nameX;
+            card.appendChild(h3Elem);
+
+            let pElem = document.createElement("p");
+            pElem.textContent = priceX;
+            card.appendChild(pElem);
+
+            let beforeThis = document.getElementsByClassName("cursorSelf")[0];
+            console.log(beforeThis);
+            let parentElem = document.getElementById("listDiv");
+            console.log(parentElem);
+            parentElem.insertBefore(card,beforeThis);
+            return objName
+        }
+    </script>
+    <!-- call&createDetail() -->
+    <script>
+        function callcreate () {
+            createDetail(reName);
+        }
+        function createDetail (objName) {
+            document.body.classList.add("stopScroll");
+            // console.log(typeof objName);
+            let imgY = objName.img;    
+            let nameY = objName.name;
+            let priceY = objName.price;
+            
+            let bgDiv = document.createElement("div");
+                bgDiv.setAttribute("class","bgDiv");
+                document.body.appendChild(bgDiv);
+
+            let fCont = document.createElement("div");
+                fCont.setAttribute("class","fixed-container");
+                bgDiv.appendChild(fCont);
+
+                let dBtn = document.createElement("div");
+                    dBtn.setAttribute("class","xMark");
+                    dBtn.setAttribute("onclick","closeMe(this)");
+                    fCont.appendChild(dBtn);
+
+                    let xImg = document.createElement("img");
+                    xImg.setAttribute("src","./img/xmark.png");
+                    dBtn.appendChild(xImg);
+
+                let gCont = document.createElement("div");
+                    gCont.setAttribute("class","grid-container");
+                    fCont.appendChild(gCont);
+
+                    let gOne = document.createElement("div");
+                        gOne.setAttribute("class","img-container");
+                        gCont.appendChild(gOne);
+
+                        let imgDiv = document.createElement("div");
+                            imgDiv.setAttribute("class","mainImg");
+                            gOne.appendChild(imgDiv);
+                        
+                            for(let i=0; i<imgY.length; i++){
+                                let gOneImg = document.createElement("img");
+                                    gOneImg.setAttribute("class","mySlides");
+                                    gOneImg.setAttribute("src",imgY[i]);
+                                    gOneImg.setAttribute("onclick","showImg(this)");
+                                    imgDiv.appendChild(gOneImg);
+                            };
+
+                        let preA = document.createElement("a");
+                        preA.setAttribute("class","prev");
+                        preA.setAttribute("onclick","plusSlides(-1)");
+                        preA.innerHTML = "&#10094;"
+                        let nexA = document.createElement("a");
+                        nexA.setAttribute("class","next");
+                        nexA.setAttribute("onclick","plusSlides(1)");
+                        nexA.innerHTML = "&#10095;"
+                        gOne.appendChild(preA);
+                        gOne.appendChild(nexA);
+
+                        gOne.appendChild(document.createElement("hr"));
+
+                        let rowDiv = document.createElement("div");
+                        rowDiv.setAttribute("class","row");
+                        gOne.appendChild(rowDiv);
+
+                        for(let i=0; i<imgY.length; i++){
+                            let colDiv = document.createElement("div");
+                            colDiv.setAttribute("class","column");
+                            rowDiv.appendChild(colDiv);
+                            let colImg = document.createElement("img");
+                            colImg.setAttribute("class","demo cursor");
+                            colImg.setAttribute("src",imgY[i]);
+                            colImg.setAttribute("onclick","currentSlide("+(i+1)+")");
+                            colDiv.appendChild(colImg);
+                        }
+
+                    let gTwo = document.createElement("div");
+                        gTwo.setAttribute("class","title-container");
+                        gCont.appendChild(gTwo);
+
+                        let nameH1 = document.createElement("h1");
+                            nameH1.textContent = nameY;
+                            gTwo.appendChild(nameH1);
+                        
+                        let dollerSpan = document.createElement("span");
+                            dollerSpan.textContent = "$";
+                            gTwo.appendChild(dollerSpan);
+
+                        let priceH2 = document.createElement("h2");
+                            priceH2.textContent = priceY;
+                            gTwo.appendChild(priceH2);
+
+                    let gThree = document.createElement("div");
+                        gThree.setAttribute("class","size-container");
+                        gCont.appendChild(gThree);
+
+                        let sizeH2 = document.createElement("h2");
+                            sizeH2.textContent = "SIZE";
+                            gThree.appendChild(sizeH2);
+
+                        let btnDiv = document.createElement("div");
+                            btnDiv.setAttribute("class","sizeDiv");
+                            gThree.appendChild(btnDiv);
+
+                            let size = ["XS","S","M"];
+
+                            for(let i=0; i<3 ;i++){
+                                let sizeBtn = document.createElement("button");
+                                    sizeBtn.textContent = size[i];
+                                    btnDiv.appendChild(sizeBtn);
+                            }
+                        
+                        let quanDiv = document.createElement("div");
+                            quanDiv.setAttribute("class","quanDiv");
+                            gThree.appendChild(quanDiv);
+                            
+                            let minBtn = document.createElement("button");
+                                minBtn.setAttribute("onclick","minusQuantity()");
+                                minBtn.textContent = "-";
+                                quanDiv.appendChild(minBtn);
+
+                            let quanInput = document.createElement("input");
+                                quanInput.setAttribute("type","number");
+                                quanInput.setAttribute("value","1");
+                                quanDiv.appendChild(quanInput);
+
+                            let addBtn = document.createElement("button");
+                                addBtn.setAttribute("onclick","addQuantity()");
+                                addBtn.textContent = "+";
+                                quanDiv.appendChild(addBtn);
+
+                    let gFour = document.createElement("div");
+                        gFour.setAttribute("class","add-container");
+                        gCont.appendChild(gFour);
+
+                        let addCratBtn = document.createElement("button");
+                            addCratBtn.textContent = "Add to Cart";
+                            gFour.appendChild(addCratBtn);
+
+                    let gFive = document.createElement("div");
+                        gFive.setAttribute("class","text-container");
+                        gCont.appendChild(gFive);
+
+                        let FiveH2 = document.createElement("h1");
+                            FiveH2.textContent = "Product Description";
+                            gFive.appendChild(FiveH2);
+
+                        gFive.appendChild(document.createElement("hr"));
+
+                        let descDiv = document.createElement("div");
+                        gFive.appendChild(descDiv);
+
+                            let p1 = document.createElement("p");
+                            let p2 = document.createElement("p");
+                            let p3 = document.createElement("p");
+                                p1.textContent = "✨Size XS/S/M";
+                                p2.textContent = "✨Free nail application kit with every purchase of PressOn Nails!";
+                                p3.textContent = "✨Application Kit includes:";
+                                descDiv.appendChild(p1);
+                                descDiv.appendChild(p2);
+                                descDiv.appendChild(p3);
+
+                            let emptUl = document.createElement("ul");
+                                descDiv.appendChild(emptUl);
+
+                                let li1 = document.createElement("li");
+                                let li2 = document.createElement("li");
+                                let li3 = document.createElement("li");
+                                    li1.textContent = "x1 Wooden applicator";
+                                    li2.textContent = "x1 Jelly Nail Tape (x20 pcs; 2 Sets)";
+                                    li3.textContent = "x1 Alchohol pad";
+                                    emptUl.appendChild(li1);
+                                    emptUl.appendChild(li2);
+                                    emptUl.appendChild(li3);
+            
+            let modDiv = document.createElement("div");
+                modDiv.setAttribute("class","modal");
+                document.body.appendChild(modDiv);
+                let svgSpan = document.createElement("span");
+                    svgSpan.setAttribute("class","close");
+                    svgSpan.setAttribute("onclick","closeImg()");
+                    svgSpan.innerHTML = "&times;";
+                    modDiv.appendChild(svgSpan);
+                let modImg = document.createElement("img");
+                    modImg.setAttribute("class","modal-content");
+                    modDiv.appendChild(modImg);
+        
+        function closeMe (temp) {
+            var preNode = temp.parentElement;
+            var prepreNode = preNode.parentElement;
+            prepreNode.remove();
+            document.body.classList.remove("stopScroll");
+        }
+        let slideIndex = 1;
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("demo");
+
+        showSlides(slideIndex);
+        function plusSlides(n) {
+        showSlides(slideIndex += n);
+        }
+        function currentSlide(n) {
+        showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+        if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace("active","");
+        }
+        slides[slideIndex-1].style.display = "block";
+        dots[slideIndex-1].className += "active";
+        }
+        var modal = document.getElementsByClassName("modal")[0];
+        var modalImg = document.getElementsByClassName("modal-content")[0];
+        function showImg (mainImg){
+            console.log("hello");
+            
+            modal.style.display = "block";
+            modalImg.src = mainImg.src;
+        }
+        function closeImg () {
+            modal.style.display = "none";
+        }
+        function minusQuantity () {
+            let inputValue = document.getElementsByClassName("quanDiv")[0].getElementsByTagName("input");
+            let Value = parseInt(inputValue[0].value);
+            let newValue;
+            if ((Value-1) < 1) {
+                newValue = 1;
+            }else{
+                newValue = Value - 1;
+            }
+            inputValue[0].value = newValue;
+        }
+
+        function addQuantity () {
+            let inputValue = document.getElementsByClassName("quanDiv")[0].getElementsByTagName("input");
+            let Value = parseInt(inputValue[0].value);
+            let newValue;
+            newValue = ((Value+1) > 5) ? 5 : Value+1;
+            console.log(newValue);
+            
+            inputValue[0].value = newValue;
+        }
+        }
+    </script>
+    <!-- 新增商品 -->
+    <script>
+        let Camellia_Japonica = new Product("Camellia Japonica","../img/Camellia Japonica.jpeg","../img/Camellia Japonica_2.jpeg","28.50",1,2,1);
+        let reName =  addCard(Camellia_Japonica);
     </script>
 </body>
 </html>
