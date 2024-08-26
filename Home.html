@@ -226,7 +226,7 @@
             <path d="M12 16V4M12 4L15.5 7.5M12 4L8.5 7.5" stroke="#8E8E8E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
         </svg>
     </div>
-    
+
     <!-- showLogin() -->
     <script>
         function showLogin () {
@@ -299,7 +299,7 @@
           input = document.getElementById('filter');
           filter = input.value.toUpperCase();
           div = document.getElementsByClassName("card");
-          
+
           for (i = 0; i < h3Elem.length; i++) {
             h3 = h3Elem[i];
             console.log(h3);
@@ -388,7 +388,7 @@
     <script>
         function Product (name,img1,img2,price,xs,s,m){
             this.name = name
-            this.img = [img1,img2,"../img/HowToMeasurre.png","../img/UserGuide.jpeg"]
+            this.img = [img1,img2,"./img/HowToMeasurre.png","./img/UserGuide.jpeg"]
             this.price = price
             this.xs = xs
             this.s = s
@@ -727,11 +727,11 @@
     </script>
     <!-- 新增商品 -->
     <script>
-        let Camellia_Japonica = new Product("Camellia Japonica","../img/Camellia Japonica.jpeg","../img/Camellia Japonica_2.jpeg","28.50",1,2,1);
-        let Golden_Blend = new Product("Golden Blend","../img/Golden Blend.jpeg","../img/Golden Blend_2.jpeg","28.50",0,0,1);
-        let Pinky_ = new Product("Pinky","../img/Pinky.jpeg","../img/Pinky_2.jpeg","28.50",1,2,2);
-        let Purple_Pearl = new Product("Purple Pearl","../img/Purple Pearl.jpeg","../img/Purple Pearl_2.jpeg","28.50",1,2,2);
-        let Shimmer_Tips = new Product("Shimmer Tips","../img/Shimmer Tips.jpeg","../img/Shimmer Tips_2.jpeg","28.50",1,2,2);
+        let Camellia_Japonica = new Product("Camellia Japonica","./img/Camellia Japonica.jpeg","./img/Camellia Japonica_2.jpeg","28.50",1,2,1);
+        let Golden_Blend = new Product("Golden Blend","./img/Golden Blend.jpeg","./img/Golden Blend_2.jpeg","28.50",0,0,1);
+        let Pinky_ = new Product("Pinky","./img/Pinky.jpeg","./img/Pinky_2.jpeg","28.50",1,2,2);
+        let Purple_Pearl = new Product("Purple Pearl","./img/Purple Pearl.jpeg","./img/Purple Pearl_2.jpeg","28.50",1,2,2);
+        let Shimmer_Tips = new Product("Shimmer Tips","./img/Shimmer Tips.jpeg","./img/Shimmer Tips_2.jpeg","28.50",1,2,2);
 
         let Name = [];
         Name[0] = addCard(Camellia_Japonica);
