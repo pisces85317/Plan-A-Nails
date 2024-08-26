@@ -138,14 +138,15 @@
         <input type="text" id="filter" onkeyup="filter()" placeholder="Search for names..">
     </div>
     <div class="gridList" id="listDiv">
-        <div class="card" onclick="callcreate()">
+        <!-- <div class="card" onclick="callcreate()">
             <div class="imgPosition">
                 <img src="./img/Camellia Japonica.jpeg">
                 <button>Add to Cart</button>
             </div>
             <h3>Camellia Japonica</h3>
-            <p>$ 28.50</p>
-        </div>
+            <span>$</span>
+            <p>28.50</p>
+        </div> -->
         <div class="card cursorSelf">
             <div class="imgPosition">
                 <img src="./img/Coming Soon.jpg" alt="Coming Soon">
@@ -261,10 +262,6 @@
         showSlides(slideIndex += n);
         }
 
-        function currentSlide(n) {
-        showSlides(slideIndex = n);
-        }
-
         function showSlides(n) {
         let i;
         let slides = document.getElementsByClassName("newsSlides");
@@ -301,6 +298,8 @@
           filter = input.value.toUpperCase();
           listDiv = document.getElementById("listDiv");
           div = listDiv.getElementsByTagName('div');
+          console.log(div);
+          
         
           for (i = 0; i < div.length; i++) {
             h3 = div[i].getElementsByTagName("h3")[0];
@@ -396,9 +395,6 @@
     <!-- addCard() -->
     <script>
         function addCard (objName) {
-            console.log(objName);
-            // console.log(typeof objName);
-            
             let imgX = objName.img;
             let nameX = objName.name;
             let priceX = objName.price;
@@ -420,17 +416,19 @@
             imgPosition.appendChild(btnElem);
 
             let h3Elem = document.createElement("h3");
-            h3Elem.textContent = nameX;
+            h3Elem.innerText = nameX;
             card.appendChild(h3Elem);
-
+            let dollerSpan = document.createElement("span");
+            dollerSpan.innerText = "$ ";
+            card.appendChild(dollerSpan);
             let pElem = document.createElement("p");
             pElem.textContent = priceX;
             card.appendChild(pElem);
 
             let beforeThis = document.getElementsByClassName("cursorSelf")[0];
-            console.log(beforeThis);
+            // console.log(beforeThis);
             let parentElem = document.getElementById("listDiv");
-            console.log(parentElem);
+            // console.log(parentElem);
             parentElem.insertBefore(card,beforeThis);
             return objName
         }
@@ -438,7 +436,7 @@
     <!-- call&createDetail() -->
     <script>
         function callcreate () {
-            createDetail(reName);
+            createDetail(Name1);
         }
         function createDetail (objName) {
             document.body.classList.add("stopScroll");
@@ -457,7 +455,6 @@
 
                 let dBtn = document.createElement("div");
                     dBtn.setAttribute("class","xMark");
-                    dBtn.setAttribute("onclick","closeMe(this)");
                     fCont.appendChild(dBtn);
 
                     let xImg = document.createElement("img");
@@ -478,19 +475,37 @@
                         
                             for(let i=0; i<imgY.length; i++){
                                 let gOneImg = document.createElement("img");
-                                    gOneImg.setAttribute("class","mySlides");
+                                let imgArrName = "img"+(i+1);
+                                    gOneImg.setAttribute("class","mySlides "+imgArrName);
                                     gOneImg.setAttribute("src",imgY[i]);
-                                    gOneImg.setAttribute("onclick","showImg(this)");
                                     imgDiv.appendChild(gOneImg);
                             };
+                            let img1Clk = document.querySelector(".img1");
+                            img1Clk.addEventListener("click",function(){
+                                modal.style.display = "block";
+                                modalImg.src = this.src;
+                            })
+                            let img2Clk = document.querySelector(".img2");
+                            img2Clk.addEventListener("click",function(){
+                                modal.style.display = "block";
+                                modalImg.src = this.src;
+                            })
+                            let img3Clk = document.querySelector(".img3");
+                            img3Clk.addEventListener("click",function(){
+                                modal.style.display = "block";
+                                modalImg.src = this.src;
+                            })
+                            let img4Clk = document.querySelector(".img4");
+                            img4Clk.addEventListener("click",function(){
+                                modal.style.display = "block";
+                                modalImg.src = this.src;
+                            })
 
                         let preA = document.createElement("a");
                         preA.setAttribute("class","prev");
-                        preA.setAttribute("onclick","plusSlides(-1)");
                         preA.innerHTML = "&#10094;"
                         let nexA = document.createElement("a");
                         nexA.setAttribute("class","next");
-                        nexA.setAttribute("onclick","plusSlides(1)");
                         nexA.innerHTML = "&#10095;"
                         gOne.appendChild(preA);
                         gOne.appendChild(nexA);
@@ -506,11 +521,27 @@
                             colDiv.setAttribute("class","column");
                             rowDiv.appendChild(colDiv);
                             let colImg = document.createElement("img");
-                            colImg.setAttribute("class","demo cursor");
+                            let arrName = "arr" + (i+1);
+                            colImg.setAttribute("class","demo cursor "+arrName);
                             colImg.setAttribute("src",imgY[i]);
-                            colImg.setAttribute("onclick","currentSlide("+(i+1)+")");
                             colDiv.appendChild(colImg);
                         }
+                        let arr1Clk = document.querySelector(".arr1");
+                        arr1Clk.addEventListener("click",function(){
+                                showSlides(slideIndex = 1 );
+                        })
+                        let arr2Clk = document.querySelector(".arr2");
+                        arr2Clk.addEventListener("click",function(){
+                                showSlides(slideIndex = 2 );
+                        })
+                        let arr3Clk = document.querySelector(".arr3");
+                        arr3Clk.addEventListener("click",function(){
+                                showSlides(slideIndex = 3 );
+                        })
+                        let arr4Clk = document.querySelector(".arr4");
+                        arr4Clk.addEventListener("click",function(){
+                                showSlides(slideIndex = 4 );
+                        })
 
                     let gTwo = document.createElement("div");
                         gTwo.setAttribute("class","title-container");
@@ -553,7 +584,7 @@
                             gThree.appendChild(quanDiv);
                             
                             let minBtn = document.createElement("button");
-                                minBtn.setAttribute("onclick","minusQuantity()");
+                                minBtn.setAttribute("class","minBtn");
                                 minBtn.textContent = "-";
                                 quanDiv.appendChild(minBtn);
 
@@ -563,7 +594,7 @@
                                 quanDiv.appendChild(quanInput);
 
                             let addBtn = document.createElement("button");
-                                addBtn.setAttribute("onclick","addQuantity()");
+                                addBtn.setAttribute("class","addBtn");
                                 addBtn.textContent = "+";
                                 quanDiv.appendChild(addBtn);
 
@@ -616,31 +647,40 @@
                 document.body.appendChild(modDiv);
                 let svgSpan = document.createElement("span");
                     svgSpan.setAttribute("class","close");
-                    svgSpan.setAttribute("onclick","closeImg()");
                     svgSpan.innerHTML = "&times;";
                     modDiv.appendChild(svgSpan);
                 let modImg = document.createElement("img");
                     modImg.setAttribute("class","modal-content");
                     modDiv.appendChild(modImg);
         
-        function closeMe (temp) {
-            var preNode = temp.parentElement;
+        let xMarkclk = document.querySelector(".xMark");
+        let modal = document.getElementsByClassName("modal")[0];
+        
+        xMarkclk.addEventListener('click',function () {
+            var preNode = this.parentElement;
             var prepreNode = preNode.parentElement;
             prepreNode.remove();
+            modal.remove();
             document.body.classList.remove("stopScroll");
-        }
+        },false);
+
+
         let slideIndex = 1;
         let i;
         let slides = document.getElementsByClassName("mySlides");
         let dots = document.getElementsByClassName("demo");
 
         showSlides(slideIndex);
-        function plusSlides(n) {
-        showSlides(slideIndex += n);
-        }
-        function currentSlide(n) {
-        showSlides(slideIndex = n);
-        }
+        
+        let prevClk = document.querySelector(".prev");
+        prevClk.addEventListener("click",function(){
+            showSlides(slideIndex += -1);
+        })
+        
+        let nextClk = document.querySelector(".next");
+        nextClk.addEventListener("click",function(){
+            showSlides(slideIndex += 1);
+        })
 
         function showSlides(n) {
         if (n > slides.length) {slideIndex = 1}
@@ -654,18 +694,16 @@
         slides[slideIndex-1].style.display = "block";
         dots[slideIndex-1].className += "active";
         }
-        var modal = document.getElementsByClassName("modal")[0];
+
         var modalImg = document.getElementsByClassName("modal-content")[0];
-        function showImg (mainImg){
-            console.log("hello");
-            
-            modal.style.display = "block";
-            modalImg.src = mainImg.src;
-        }
-        function closeImg () {
+
+        let closeClk = document.querySelector(".close");
+        closeClk.addEventListener("click",function(){
             modal.style.display = "none";
-        }
-        function minusQuantity () {
+        })
+
+        let minBtnClk = document.querySelector(".minBtn");
+        minBtnClk.addEventListener("click",function(){
             let inputValue = document.getElementsByClassName("quanDiv")[0].getElementsByTagName("input");
             let Value = parseInt(inputValue[0].value);
             let newValue;
@@ -675,23 +713,31 @@
                 newValue = Value - 1;
             }
             inputValue[0].value = newValue;
-        }
+        })
 
-        function addQuantity () {
+        let addBtnClk = document.querySelector(".addBtn");
+        addBtnClk.addEventListener("click",function(){
             let inputValue = document.getElementsByClassName("quanDiv")[0].getElementsByTagName("input");
             let Value = parseInt(inputValue[0].value);
             let newValue;
             newValue = ((Value+1) > 5) ? 5 : Value+1;
-            console.log(newValue);
-            
             inputValue[0].value = newValue;
-        }
+        })
+
         }
     </script>
     <!-- 新增商品 -->
     <script>
         let Camellia_Japonica = new Product("Camellia Japonica","../img/Camellia Japonica.jpeg","../img/Camellia Japonica_2.jpeg","28.50",1,2,1);
-        let reName =  addCard(Camellia_Japonica);
+        let Golden_Blend = new Product("Golden Blend","../img/Golden Blend.jpeg","../img/Golden Blend_2.jpeg","28.50",0,0,1);
+        let Pinky_ = new Product("Pinky","../img/Pinky.jpeg","../img/Pinky_2.jpeg","28.50",1,2,2);
+        let Purple_Pearl = new Product("Purple Pearl","../img/Purple Pearl.jpeg","../img/Purple Pearl_2.jpeg","28.50",1,2,2);
+        let Shimmer_Tips = new Product("Shimmer Tips","../img/Shimmer Tips.jpeg","../img/Shimmer Tips_2.jpeg","28.50",1,2,2);
+        let Name1 =  addCard(Camellia_Japonica);
+        let Name2 = addCard(Golden_Blend);
+        let Name3 = addCard(Pinky_);
+        let Name5 = addCard(Purple_Pearl);
+        let Name4 = addCard(Shimmer_Tips);
     </script>
 </body>
 </html>
