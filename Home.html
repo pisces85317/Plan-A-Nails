@@ -153,43 +153,49 @@
         </div>
     </div>
     <!-- 頁尾 -->
-    <div class="descripOne hidden" id="linkOne">
-        <h1>Support</h1>
-        <p>📞Phone:+(61) 478757226</p>
-        <p>✉️Email:plananails888@gmail.com</p>
-        <p>📍Address:Student one 363 Adelaide street Brisbane City4000</p>
+    <div class="hiddenOne hidden">
+        <div class="descripOne">
+            <h1>Support</h1>
+            <p>📞Phone:+(61) 478757226</p>
+            <p>✉️Email:plananails888@gmail.com</p>
+            <p>📍Address:Student one 363 Adelaide street Brisbane City4000</p>
+        </div>
     </div>
-    <div class="descripTwo hidden" id="linkTwo">
-        <h1>Shipping Methods</h1>
-        <p>We currently offer standard and express shipping via Australia Post for all orders within and outside Australia.</p>
-        <h1>Domestic Shipping Rate</h1>
-        <p>Orders $49 and over</p>
-        <p>Standard Shipping: FREE
-            Express Shipping: $5.95
-            Orders under $49</p>
-        <p>Standard Shipping: $8.5
-            Express Shipping: $11.95
-            Order Processing Time</p>
-        <p>All orders are processed within 1 business day. Once your order has been shipped, you will receive a shipping confirmation email with your tracking information. </p>
-        <h1>Delivery Time</h1>
-        <p>Delivery times vary depending on your location and the shipping method you choose. Standard shipping typically takes 2-5 business days for delivery within Australia, while express shipping typically takes 1-2 business days.
-            
-            For international orders, standard shipping can take up to 15 business days, while express shipping typically takes 5-7 business days.
-            
-            Please note that delivery times may be delayed due to unforeseen circumstances such as weather, holidays, or other factors outside of our control.
-            
-            Undeliverable Packages</p>
-        <p>If a package is undeliverable due to an incorrect shipping address provided by the customer, the customer will be responsible for the additional shipping costs to re-ship the order. If the package is undeliverable due to other reasons, we will contact the customer to determine the best course of action.</p>
+    <div class="hiddenTwo hidden">
+        <div class="descripTwo">
+            <h1>Shipping Methods</h1>
+            <p>We currently offer standard and express shipping via Australia Post for all orders within and outside Australia.</p>
+            <h1>Domestic Shipping Rate</h1>
+            <p>Orders $49 and over</p>
+            <p>Standard Shipping: FREE
+                Express Shipping: $5.95
+                Orders under $49</p>
+            <p>Standard Shipping: $8.5
+                Express Shipping: $11.95
+                Order Processing Time</p>
+            <p>All orders are processed within 1 business day. Once your order has been shipped, you will receive a shipping confirmation email with your tracking information. </p>
+            <h1>Delivery Time</h1>
+            <p>Delivery times vary depending on your location and the shipping method you choose. Standard shipping typically takes 2-5 business days for delivery within Australia, while express shipping typically takes 1-2 business days.
+                
+                For international orders, standard shipping can take up to 15 business days, while express shipping typically takes 5-7 business days.
+                
+                Please note that delivery times may be delayed due to unforeseen circumstances such as weather, holidays, or other factors outside of our control.
+                
+                Undeliverable Packages</p>
+            <p>If a package is undeliverable due to an incorrect shipping address provided by the customer, the customer will be responsible for the additional shipping costs to re-ship the order. If the package is undeliverable due to other reasons, we will contact the customer to determine the best course of action.</p>
+        </div>
     </div>
-    <div class="descripThree hidden" id="linkThree">
-        <h1>Return Eligibility</h1>
-        <p>If you are not satisfied with your purchase, you can return the item(s) for a full refund or exchange within 14 days of receiving your order. To be eligible for a return, the item(s) must be unused, in the same condition that you received them, and in their original packaging.</p>
-        <h1>Return Process</h1>
-        <p>To initiate a return, please email us with your order number, the item(s) you wish to return, and the reason for the return. We will provide you with instructions on how to return the item(s) to us. Please note that the customer is responsible for all return shipping costs unless the item(s) received were defective or incorrect.</p>
-        <h1>Refunds</h1>
-        <p>Once we receive your returned item(s), we will inspect them and notify you of the status of your refund. If your return is approved, we will initiate a refund to your original method of payment. Please note that it may take several business days for your refund to appear on your credit card or bank statement.</p>
-        <h1>Defective or Incorrect Items</h1>
-        <p>If you receive a defective or incorrect item, please email us within 14 days of receiving your order with your order number and a photo of the defective or incorrect item(s). We will provide you with instructions on how to return the item(s) to us and a prepaid return label. Once we receive the defective or incorrect item(s), we will process your refund or exchange as soon as possible.</p>
+    <div class="hiddenThree hidden">
+        <div class="descripThree">
+            <h1>Return Eligibility</h1>
+            <p>If you are not satisfied with your purchase, you can return the item(s) for a full refund or exchange within 14 days of receiving your order. To be eligible for a return, the item(s) must be unused, in the same condition that you received them, and in their original packaging.</p>
+            <h1>Return Process</h1>
+            <p>To initiate a return, please email us with your order number, the item(s) you wish to return, and the reason for the return. We will provide you with instructions on how to return the item(s) to us. Please note that the customer is responsible for all return shipping costs unless the item(s) received were defective or incorrect.</p>
+            <h1>Refunds</h1>
+            <p>Once we receive your returned item(s), we will inspect them and notify you of the status of your refund. If your return is approved, we will initiate a refund to your original method of payment. Please note that it may take several business days for your refund to appear on your credit card or bank statement.</p>
+            <h1>Defective or Incorrect Items</h1>
+            <p>If you receive a defective or incorrect item, please email us within 14 days of receiving your order with your order number and a photo of the defective or incorrect item(s). We will provide you with instructions on how to return the item(s) to us and a prepaid return label. Once we receive the defective or incorrect item(s), we will process your refund or exchange as soon as possible.</p>
+        </div>
     </div>
     <div class="divFooter">
         <div class="divCos">
@@ -309,9 +315,9 @@
     </script>
     <!-- showMsg() -->
     <script>
-        var linkOne = document.getElementById("linkOne").classList;
-        var linkTwo = document.getElementById("linkTwo").classList;
-        var linkThree = document.getElementById("linkThree").classList;
+        var linkOne = document.getElementsByClassName("hiddenOne")[0].classList;
+        var linkTwo = document.getElementsByClassName("hiddenTwo")[0].classList;
+        var linkThree = document.getElementsByClassName("hiddenThree")[0].classList;
         function showMsgOne() {
             // console.log(linkOne);
             if(linkOne.contains("hidden")){
