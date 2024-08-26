@@ -139,15 +139,6 @@
         <input type="text" id="filter" onkeyup="filter()" placeholder="Search for names..">
     </div>
     <div class="gridList" id="listDiv">
-        <!-- <div class="card" onclick="callcreate()">
-            <div class="imgPosition">
-                <img src="./img/Camellia Japonica.jpeg">
-                <button>Add to Cart</button>
-            </div>
-            <h3>Camellia Japonica</h3>
-            <span>$</span>
-            <p>28.50</p>
-        </div> -->
         <div class="card cursorSelf">
             <div class="imgPosition">
                 <img src="./img/Coming Soon.jpg" alt="Coming Soon">
@@ -366,24 +357,22 @@
     </script>
     <!-- topFunction() -->
     <script>
-        var  mybutton = document.getElementById("myBtn");
-        window.onscroll = function() {scrollFunction()};
-
-        function scrollFunction() {            
-            if (document.body.scrollTop > 870 || document.documentElement.scrollTop > 870) {
-                mybutton.style.display = "block";
-            } else {
-                mybutton.style.display = "none";
-            }
-        }
-
-        function topFunction() {
-            document.body.scrollTop = 870; 
-            // For Safari
-            document.documentElement.scrollTop = 870; 
-            // For Chrome, Firefox, IE and Opera
-            
-        }
+        document.addEventListener("DOMContentLoaded",function(){
+            var  mybutton = document.getElementById("myBtn");
+            window.addEventListener("scroll",() => {
+                if (window.scrollY > 870){
+                    mybutton.style.display = "block";
+                }else{
+                    mybutton.style.display = "none";
+                }
+            });
+            mybutton.addEventListener("click",() => {
+                window.scrollTo({
+                    top:870,
+                    behavior:"smooth"
+                })
+            })
+        })
     </script>
     <!-- Product(產品物件) -->
     <script>
@@ -733,6 +722,11 @@
         let Pinky_ = new Product("Pinky","./img/Pinky.jpeg","./img/Pinky_2.jpeg","28.50",1,2,2);
         let Purple_Pearl = new Product("Purple Pearl","./img/Purple Pearl.jpeg","./img/Purple Pearl_2.jpeg","28.50",1,2,2);
         let Shimmer_Tips = new Product("Shimmer Tips","./img/Shimmer Tips.jpeg","./img/Shimmer Tips_2.jpeg","28.50",1,2,2);
+        let The_Secret_Garden = new Product("The secret garden","./img/The secret garden.jpeg","./img/The secret garden_2.jpeg","28.50",0,1,0);
+        let The_Ocean = new Product("The Ocean","./img/The Ocean.jpeg","./img/The Ocean_2.jpeg","28.50",1,2,2);
+        let The_Tulips = new Product("The Tulips","./img/The Tulips.jpeg","./img/The Tulips_2.jpeg","28.50",1,2,2);
+        let Twlight_ = new Product("Twlight","./img/Twlight.jpeg","./img/Twlight_2.jpeg","28.50",1,2,2);
+        let Mysterious_ = new Product("Mysterious","./img/Mysterious.jpeg","./img/Mysterious_2.jpeg","28.50",1,2,2);
 
         let Name = [];
         Name[0] = addCard(Camellia_Japonica);
@@ -740,6 +734,11 @@
         Name[2] = addCard(Pinky_);
         Name[3] = addCard(Purple_Pearl);
         Name[4] = addCard(Shimmer_Tips);
+        Name[5] = addCard(The_Secret_Garden);
+        Name[6] = addCard(The_Ocean);
+        Name[7] = addCard(The_Tulips);
+        Name[8] = addCard(Twlight_);
+        Name[9] = addCard(Mysterious_);
         
         let proList = document.getElementById("listDiv").getElementsByClassName("card");
         for(let i=0; i<proList.length; i++){
