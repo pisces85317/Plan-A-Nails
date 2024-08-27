@@ -144,6 +144,11 @@
 .cartItemPrice div {
     display: inline-block;
 }
+.cartItemdollar {
+    font-size: 20px; 
+    position: absolute; 
+    bottom: 0;
+}
 .cartItemPriceNum {
     font-size: 28px;
     position: absolute;

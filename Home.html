@@ -94,13 +94,13 @@
                         <div class="cartItemTitle">Camellia Japonica</div>
                         <div class="cartItemSize">XS</div>
                         <div class="cartItemPrice">
-                            <div style="font-size: 20px; position: absolute; bottom: 0;">$</div>
+                            <div class="cartItemdollar">$</div>
                             <div class="cartItemPriceNum">00.00</div>
                         </div>
                         <div class="cartItemQuantity">
                             <div class="cartItemQuantityBtn">
                                 <button onclick="minusQuantity (this)">-</button>
-                                <input type="text" class="cartInputValue" readonly value="5">
+                                <input type="text" class="cartInputValue" readonly>
                                 <button onclick="addQuantity (this)">+</button>
                             </div>
                         </div>
@@ -385,13 +385,16 @@
     </script>
     <!-- addCard() -->
     <script>
-        function addCard (objName) {
-            let imgX = objName.img;
-            let nameX = objName.name;
-            let priceX = objName.price;
+        function addCard (product) {
+            let imgX = product.img;
+            let nameX = product.name;
+            let priceX = product.price;
 
             let card = document.createElement("div");
             card.setAttribute("class","card");
+            card.addEventListener("click",function(){
+                createDetail(product);
+            })
 
             let imgPosition = document.createElement("div");
             imgPosition.setAttribute("class","imgPosition");
@@ -416,21 +419,17 @@
             card.appendChild(pElem);
 
             let beforeThis = document.getElementsByClassName("cursorSelf")[0];
-            // console.log(beforeThis);
             let parentElem = document.getElementById("listDiv");
-            // console.log(parentElem);
             parentElem.insertBefore(card,beforeThis);
-            return objName
         }
     </script>
     <!-- createDetail() -->
     <script>
-        function createDetail (objName) {
+        function createDetail (product) {
             document.body.classList.add("stopScroll");
-            // console.log(typeof objName);
-            let imgY = objName.img;    
-            let nameY = objName.name;
-            let priceY = objName.price;
+            let imgY = product.img;    
+            let nameY = product.name;
+            let priceY = product.price;
             
             let bgDiv = document.createElement("div");
                 bgDiv.setAttribute("class","bgDiv");
@@ -565,7 +564,6 @@
                                     sizeBtn.textContent = size[i];
                                     btnDiv.appendChild(sizeBtn);
                             }
-                            console.log(btnDiv.children);
                             let sizeBtnClk = btnDiv.children;
                             for (let i = 0; i < sizeBtnClk.length; i++) {
                                 sizeBtnClk[i].addEventListener("click",function(){
@@ -724,38 +722,92 @@
     </script>
     <!-- addItem() -->
     <script>
+        function addItem(product,size,quantity) {
+            let img = product.img[0];
+            let name = product.name;
+            let price = product.price;
 
+            let subDiv = document.createElement("div");
+                subDiv.setAttribute("class","cartItemSub");
+                document.getElementsByClassName("cartItem")[0].appendChild(subDiv);
+            let gridDiv = document.createElement("class","div");
+                gridDiv.setAttribute("class","cartItemGrid");
+                subDiv.appendChild(gridDiv);
+            let imgDiv = document.createElement("div");
+                imgDiv.setAttribute("class","cartItemImg");
+                imgDiv.style.backgroundImage = "url("+img+")";
+                gridDiv.appendChild(imgDiv);
+            let titleDiv = document.createElement("div");
+                titleDiv.setAttribute("class","cartItemTitle");
+                titleDiv.textContent = name ;
+                gridDiv.appendChild(titleDiv);
+            let sizeDiv = document.createElement("div");
+                sizeDiv.setAttribute("class","cartItemSize");
+                sizeDiv.textContent = size;
+                gridDiv.appendChild(sizeDiv);
+            let priceDiv = document.createElement("div");
+                priceDiv.setAttribute("class","cartItemPrice");
+                gridDiv.appendChild(priceDiv);
+            let dollarDiv = document.createElement("div");
+                dollarDiv.setAttribute("class","cartItemdollar");
+                dollarDiv.textContent = "$";
+                priceDiv.appendChild(dollarDiv);
+            let numDiv = document.createElement("div");
+                numDiv.setAttribute("class","cartItemPriceNum");
+                numDiv.textContent = price ;
+                priceDiv.appendChild(numDiv);
+            let quanDiv = document.createElement("div");
+                quanDiv.setAttribute("class","cartItemQuantity");
+                gridDiv.appendChild(quanDiv);
+            let btnDiv = document.createElement("div");
+                btnDiv.setAttribute("class","cartItemQuantityBtn");
+                quanDiv.appendChild(btnDiv);
+            let minBtn = document.createElement("button");
+                minBtn.textContent = "-";
+                btnDiv.appendChild(minBtn);
+            let btnInput = document.createElement("input");
+                btnInput.setAttribute("type","text");
+                btnInput.setAttribute("class","cartInputValue");
+                btnInput.setAttribute("readonly");
+                btnInput.setAttribute("value",quantity);
+                btnDiv.appendChild(minBtn);
+            let addBtn = document.createElement("button");
+                addBtn.textContent = "-";
+                btnDiv.appendChild(addBtn);
+
+                minBtn.addEventListener("click",function(){
+
+                })
+                addBtn.addEventListener("click",function(){
+
+                })
+            let xMarkDiv = document.createElement("div");
+                xMarkDiv.setAttribute("class","cartItemXmark");
+                subDiv.appendChild(xMarkDiv);
+            let xImg = document.createElement("img");
+                xImg.setAttribute("src","./img/xmark.png");
+                xMarkDiv.appendChild(xImg);
+            
+            return quantity
+        }
     </script>
     <!-- 新增商品 -->
     <script>
-        let Camellia_Japonica = new Product("Camellia Japonica","./img/Camellia Japonica.jpeg","./img/Camellia Japonica_2.jpeg","28.50",1,2,1);
-        let Golden_Blend = new Product("Golden Blend","./img/Golden Blend.jpeg","./img/Golden Blend_2.jpeg","28.50",0,0,1);
-        let Pinky_ = new Product("Pinky","./img/Pinky.jpeg","./img/Pinky_2.jpeg","28.50",1,2,2);
-        let Purple_Pearl = new Product("Purple Pearl","./img/Purple Pearl.jpeg","./img/Purple Pearl_2.jpeg","28.50",1,2,2);
-        let Shimmer_Tips = new Product("Shimmer Tips","./img/Shimmer Tips.jpeg","./img/Shimmer Tips_2.jpeg","28.50",1,2,2);
-        let The_Secret_Garden = new Product("The secret garden","./img/The secret garden.jpeg","./img/The secret garden_2.jpeg","28.50",0,1,0);
-        let The_Ocean = new Product("The Ocean","./img/The Ocean.jpeg","./img/The Ocean_2.jpeg","28.50",1,2,2);
-        let The_Tulips = new Product("The Tulips","./img/The Tulips.jpeg","./img/The Tulips_2.jpeg","28.50",1,2,2);
-        let Twlight_ = new Product("Twlight","./img/Twlight.jpeg","./img/Twlight_2.jpeg","28.50",1,2,2);
-        let Mysterious_ = new Product("Mysterious","./img/Mysterious.jpeg","./img/Mysterious_2.jpeg","28.50",1,2,2);
+        let productArr = [
+            new Product("Camellia Japonica","./img/Camellia Japonica.jpeg","./img/Camellia Japonica_2.jpeg","28.50",1,2,1),
+            new Product("Golden Blend","./img/Golden Blend.jpeg","./img/Golden Blend_2.jpeg","28.50",0,0,1),
+            new Product("Pinky","./img/Pinky.jpeg","./img/Pinky_2.jpeg","28.50",1,2,2),
+            new Product("Purple Pearl","./img/Purple Pearl.jpeg","./img/Purple Pearl_2.jpeg","28.50",1,2,2),
+            new Product("Shimmer Tips","./img/Shimmer Tips.jpeg","./img/Shimmer Tips_2.jpeg","28.50",1,2,2),
+            new Product("The secret garden","./img/The secret garden.jpeg","./img/The secret garden_2.jpeg","28.50",0,1,0),
+            new Product("The Ocean","./img/The Ocean.jpeg","./img/The Ocean_2.jpeg","28.50",1,2,2),
+            new Product("The Tulips","./img/The Tulips.jpeg","./img/The Tulips_2.jpeg","28.50",1,2,2),
+            new Product("Twlight","./img/Twlight.jpeg","./img/Twlight_2.jpeg","28.50",1,2,2),
+            new Product("Mysterious","./img/Mysterious.jpeg","./img/Mysterious_2.jpeg","28.50",1,2,2),
+        ];
 
-        let Name = [];
-        Name[0] = addCard(Camellia_Japonica);
-        Name[1] = addCard(Golden_Blend);
-        Name[2] = addCard(Pinky_);
-        Name[3] = addCard(Purple_Pearl);
-        Name[4] = addCard(Shimmer_Tips);
-        Name[5] = addCard(The_Secret_Garden);
-        Name[6] = addCard(The_Ocean);
-        Name[7] = addCard(The_Tulips);
-        Name[8] = addCard(Twlight_);
-        Name[9] = addCard(Mysterious_);
-        
-        let proList = document.getElementById("listDiv").getElementsByClassName("card");
-        for(let i=0; i<proList.length; i++){
-            proList[i].addEventListener("click",function(){
-                createDetail(Name[i]);
-            })
+        for (let i=0; i<productArr.length; i++){
+            addCard(productArr[i]);
         }
     </script>
 </body>
