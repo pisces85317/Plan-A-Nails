@@ -293,8 +293,8 @@
     border-radius: 5px;
     cursor: pointer;
 }
-.sizeDiv button:focus {
-    border: 2px solid rgba(0, 0, 0, 0.5);
+.btnClk {
+    border: 2px solid rgba(0, 0, 0, 0.5)  !important;
 }
 .quanDiv {
     display: inline-flex;

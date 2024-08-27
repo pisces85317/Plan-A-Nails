@@ -561,10 +561,19 @@
                             let size = ["XS","S","M"];
 
                             for(let i=0; i<3 ;i++){
-                                let sizeBtn = document.createElement("button");
+                                var sizeBtn = document.createElement("button");
                                     sizeBtn.textContent = size[i];
                                     btnDiv.appendChild(sizeBtn);
                             }
+                            console.log(btnDiv.children);
+                            let sizeBtnClk = btnDiv.children;
+                            for (let i = 0; i < sizeBtnClk.length; i++) {
+                                sizeBtnClk[i].addEventListener("click",function(){
+                                        for(let j=0; j<3; j++){
+                                            sizeBtnClk[j].classList.remove('btnClk');
+                                        }
+                                        this.classList.add("btnClk");
+                                    })}
                         
                         let quanDiv = document.createElement("div");
                             quanDiv.setAttribute("class","quanDiv");
